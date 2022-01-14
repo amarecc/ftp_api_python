@@ -38,3 +38,35 @@ def download(localpath, serverpath, user, passwd):
     # Close
     if sftp: sftp.close()
     if transport: transport.close()
+
+def delete(serverpath, user, passwd):
+    """
+    Download a file from the server
+    :param serverpath: Absolute path of the server file (extension included)
+    """
+    transport, sftp = connect(user, passwd)
+
+    # Download
+    sftp.remove(serverpath)
+
+    # Close
+    if sftp: sftp.close()
+    if transport: transport.close()
+
+def listdir(user, passwd, serverpath="."):
+    """
+    Download a file from the server
+    :param serverpath: Absolute path of the server folder (Current user folder by default)
+    """
+    transport, sftp = connect(user, passwd)
+
+    # Download
+    directory_list = [file for file in sftp.listdir(serverpath) if not file.startswith('.')]
+
+    # Close
+    if sftp: sftp.close()
+    if transport: transport.close()
+
+    return directory_list
+
+print(listdir("ylemesle", "y\Pz=QPtg%nYZBT0keTS"))
