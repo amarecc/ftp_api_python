@@ -68,5 +68,3 @@ def listdir(user, passwd, serverpath="."):
     if transport: transport.close()
 
     return directory_list
-
-print(listdir("ylemesle", "y\Pz=QPtg%nYZBT0keTS"))
